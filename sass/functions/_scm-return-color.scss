@@ -1,0 +1,19 @@
+@function scm-return-color($color, $variant) {
+	$this-color: scm-get-color($color);
+	$this-variant-function: scm-get-variant-function($variant);
+	$this-variant-parameters: scm-get-variant-parameters($variant);
+	
+	@if ( $this-variant-function ) {
+		$args: join($this-variant-function, $color);
+		@each $value in $this-variant-parameters {
+			$args: join($args, $value);
+		}
+		@return call($args...);
+	} @else {
+		@return $color;
+	}
+}
+
+@function scm($c, $v: false) {
+	@return scm-return-color($c, $v);
+}

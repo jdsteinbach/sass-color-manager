@@ -1,0 +1,17 @@
+@mixin scm-add-variant($name, $function, $parameters...) {
+	$new-params: null;
+	@if type-of($parameters) == list {
+		@each $value in $parameters {
+			$new-params: $parameters;
+		}
+	} @else {
+		$new-params: $parameters;
+	}
+	$new: (
+		$name: (
+			function: $function,
+			parameters: $parameters
+		)
+	);
+	$scm-variants: map-merge( $scm-variants, $new ) !global;
+}

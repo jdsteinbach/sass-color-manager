@@ -1,0 +1,15 @@
+$scm-variants: (
+	dark: (
+		function: darken,
+		parameters: 10%
+	),
+	light: (
+		function: lighten,
+		parameters: 10%
+	)
+	,
+	fade-alt: (
+		function: rgba,
+		parameters: .4
+	)
+) !global;

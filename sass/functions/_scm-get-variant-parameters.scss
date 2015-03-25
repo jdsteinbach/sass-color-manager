@@ -1,0 +1,16 @@
+@function scm-get-variant-parameters($variant) {
+	@if $variant {
+		@if not map-has-key($scm-variants, $variant) {
+			@error "Invalid $variant: `#{$variant}`.";
+		} @else {
+			$this-variant: map-get($scm-variants, $variant);
+			$args: map-get($this-variant, parameters);
+			@if length($args) == 1 {
+				@return nth($args, 1);
+			}
+			@return $args;
+		}
+	} @else {
+		@return false;
+	}
+}

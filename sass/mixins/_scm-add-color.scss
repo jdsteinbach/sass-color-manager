@@ -1,0 +1,6 @@
+@mixin scm-add-color($name, $value) {
+	$new: (
+		$name: $value
+	);
+	$scm-colors: map-merge( $scm-colors, $new ) !global;
+}

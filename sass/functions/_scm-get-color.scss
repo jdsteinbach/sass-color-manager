@@ -1,0 +1,11 @@
+@function scm-get-color($color) {
+	@if map-has-key($scm-colors, $color) {
+		$color: map-get($scm-colors, $color);
+	} @else {
+		@if type-of($color) != color {
+			@error "Invalid color name: `#{$color}`.";
+		}
+	}
+	
+	@return $color;
+}
